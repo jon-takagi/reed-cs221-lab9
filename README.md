@@ -16,3 +16,6 @@ The Heap<T> class is declared in `binary_heap.hh`. I chose to use a `std::vector
 The Heap<T> class is implemented in `binary_heap.cc`. The constructor takes a vector of values but does not assume that the arguments are already ordered as a heap.
 `build_heap` bubbles up each leaf using the `heapify` method. It saves time by only examining the leaves, since any non-leaf nodes will be compared to everything below them as their children are bubbled up. At the end of this method, the heap property holds.
 `heapify` bubbles up a single node if it is greater than its parent. This method assumes that the `>` exists for the given type. By recursively calling itself, it guarantees that the node reaches the correct height.
+
+### Testing
+The `heap_test.cc` file tests the program on two builtin types - `int` and `double`. I create heaps out of some initial values, then test all 3 public methods (`size`, `pop_node` and `add_node`). By using initial values that are not in a heap, I can check that `build_heap` works correctly by checking that the max is pulled to the top. I also test that `add_node` maintains the heap property by adding a value that should bubble to max and then pop it off.
