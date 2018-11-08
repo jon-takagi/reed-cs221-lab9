@@ -1,11 +1,14 @@
 #include "binary_heap.hh"
 #include <iostream>
+
+// takes a set of values to start with
+// does not assume they are already ordered correctly.
 template<class T>
 Heap<T>::Heap(std::vector<T> args){
     elements = args;
     build_heap();
 }
-
+// std::vectors such as elements automatically update their size
 template<class T>
 int Heap<T>::size(){
     return elements.size();
@@ -40,6 +43,7 @@ void Heap<T>::build_heap(){
 }
 //heapify checks if a node is less than its parent
 //this method will bubble-up the greatest node in the tree
+// fails if `>` is not defined on T
 template<class T>
 void Heap<T>::heapify(int node){
     if(elements.at(node) > elements.at(node / 2)){
